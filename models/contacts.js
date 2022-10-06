@@ -3,7 +3,7 @@ const fs = require("fs/promises");
 const path = require("path");
 const { nanoid } = require("nanoid");
 
-const contactspath = path.join(__dirname, "db/contacts.json");
+const contactspath = path.join(__dirname, "./contacts.json");
 console.log(contactspath);
 
 const updateContacts = async (contacts) =>
@@ -21,15 +21,14 @@ const getContactById = async (id) => {
   return result || null;
 };
 
-const addContact = async (name, email, phone) => {
+const addContact = async (body) => {
   const contacts = await listContacts();
 
   const newContact = {
     id: nanoid(),
-    name,
-    email,
-    phone,
+    ...body,
   };
+  console.log(newContact);
   contacts.push(newContact);
   await updateContacts(contacts);
   return newContact;

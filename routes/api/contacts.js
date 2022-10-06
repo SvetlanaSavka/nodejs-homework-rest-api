@@ -29,34 +29,32 @@ module.exports = router;
  */
 
 const express = require("express");
-/* const Joi = require("joi"); */
+const Joi = require("joi");
 
 const contacts = require("../../models/contacts");
-/* const { RequestError } = require("../../helpers"); */
+const RequestError = require("../../helpers");
 
 const router = express.Router();
 
-/* const addShema = Joi.object({
+const addSchema = Joi.object({
   name: Joi.string().required(),
   email: Joi.string().required(),
   phone: Joi.string().required(),
-}); */
+});
 
 router.get("/", async (req, res, next) => {
   try {
     const result = await contacts.listContacts();
     res.json(result);
-    /*  res.status(200).json(result); */
   } catch (error) {
     next(error);
   }
 });
 
-/* router.get("/:id", async (req, res, next) => {
+router.get("/:id", async (req, res, next) => {
   try {
     const { id } = req.params;
     const result = await contacts.getContactById(id);
-     res.status(200).json(result);
     if (!result) {
       throw RequestError(404, "Not found");
     }
@@ -64,37 +62,40 @@ router.get("/", async (req, res, next) => {
   } catch (error) {
     next(error);
   }
-}); */
+});
 
 /* router.post("/", async (req, res, next) => {
   try {
-    const { error } = addSchema.validate(req.body)
+    const { error } = addSchema.validate(req.body);
+    console.log(error);
     if (error) {
-       throw RequestError(400, error.message);
+      throw RequestError(400, error.message);
     }
     const result = await contacts.addContact(req.body);
     res.status(201).json(result);
   } catch (error) {
     next(error);
   }
-}); */
+});
+console.log(RequestError); */
 
-/* router.put("/", async (req, res, next) => {
+router.put("/", async (req, res, next) => {
   try {
     const { error } = addSchema.validate(req.body);
     if (error) {
       throw RequestError(400, error.message);
     }
     const { id } = req.params;
+    console.log("id: ", id);
     const result = await contacts.updateById(id, req.body);
     if (!result) {
       throw RequestError(404, "Not found");
     }
-     res.status(201).json(result);
+    res.status(201).json(result);
   } catch (error) {
     next(error);
   }
-}); */
+});
 
 /*  router.delete("/:id", async (req, res, next) => {
   try {

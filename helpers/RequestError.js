@@ -1,4 +1,4 @@
-/* const messages = {
+const messages = {
   400: "Bad Request",
   401: "Unauthorized",
   403: "Forbbiden",
@@ -13,4 +13,3 @@ const RequestError = (status, message = messages[status]) => {
 };
 
 module.exports = RequestError;
- */

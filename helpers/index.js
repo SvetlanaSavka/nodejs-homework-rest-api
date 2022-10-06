@@ -1,3 +1,3 @@
-/* const ReqestError = require("./RequestError");
+const ReqestError = require("./RequestError");
 
-module.exports = { ReqestError }; */
+module.exports = { ReqestError };
