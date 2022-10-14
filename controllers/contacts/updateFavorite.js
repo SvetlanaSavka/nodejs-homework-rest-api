@@ -11,8 +11,3 @@ const updateFavorite = async (req, res) => {
 };
 
 module.exports = updateFavorite;
-
-/* "name": "Savka Alina",
-   "email": "savka@ukr.net",
-    "phone": "(748) 206-2688",
-    "isbn": "111-2-654-23456-7" */
